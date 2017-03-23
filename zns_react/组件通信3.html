@@ -36,6 +36,8 @@
 				</div>)
 			}
 		}
+
+
 		class MyParent extends React.Component{
 			constructor(...args){
 				super(...args);
@@ -44,6 +46,7 @@
 				};
 			}
 			fnParent(msg){
+				console.log('msg',msg);
 				this.setState({
 					msg:msg
 				});

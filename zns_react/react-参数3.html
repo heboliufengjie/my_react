@@ -13,18 +13,24 @@
 	</div>
 	<script type="text/babel">
 		class MyTitle extends React.Component{
-			constructor(){
-				super();
+			constructor(...args){
+				super(...args);
 			}
+
 			show(){
-				this.props.a='dddd';
+				//this.props.a='dddd';
+				this.setState({
+					show:this.bSign?'none':'block'
+				});
 			}
+
 			render(){
 				return (<div>
 					<h3 onClick={this.show.bind(this)} style={{color:this.props.bgColor}}>{this.props.bgColor}</h3><h4>welcome h4</h4>
 				</div>)
 			}
 		} 
+
 		ReactDOM.render(
 			<MyTitle bgColor="red" />,
 			document.querySelector('#div1')
