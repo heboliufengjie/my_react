@@ -16,6 +16,7 @@
 				constructor(...args){
 					super(...args);
 					console.log('this',this)
+					this.show = this.show.bind(this);
 					this.state={
 						a:'初始值',
 					}
@@ -30,7 +31,7 @@
 				render(){
 					return (
 						<div>
-							<h3 onClick={this.show.bind(this)}>{this.state.a}</h3>
+							<h3 onClick={this.show)}>{this.state.a}</h3>
 						</div>
 					);
 				}
