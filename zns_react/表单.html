@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+	<script src="lib/jquery.js"></script>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+			}
+			render(){
+				return (<div>
+					<input type="text" placeholder="abc" />
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

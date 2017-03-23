@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					a:''
+				};
+			}
+			fnInput(){
+				let oInput=document.getElementById('input1');
+				let val=oInput.value;
+				this.setState({
+					a:val
+				});
+			}
+			render(){
+				return (<div>
+					<input id="input1" type="text" onInput={this.fnInput.bind(this)} />
+					<h3>{this.state.a || '默认数据'}</h3>
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

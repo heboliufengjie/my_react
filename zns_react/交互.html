@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					newsArr:['apple','banana','orange']
+				};
+			}
+			componentDidMount(){
+				let oUl=this.refs.ul1;
+
+				this.state.newsArr.forEach((val,index)=>{
+					let oLi=document.createElement('li');
+					oLi.innerHTML=val;
+					oUl.appendChild(oLi);
+				})
+			}
+			render(){
+				return (<div>
+					<input type="button" value="获取数据" />
+					<ul ref="ul1">
+					</ul>
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

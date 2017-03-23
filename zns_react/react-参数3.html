@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(){
+				super();
+			}
+			show(){
+				this.props.a='dddd';
+			}
+			render(){
+				return (<div>
+					<h3 onClick={this.show.bind(this)} style={{color:this.props.bgColor}}>{this.props.bgColor}</h3><h4>welcome h4</h4>
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle bgColor="red" />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

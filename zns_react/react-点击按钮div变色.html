@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					style:{
+						width:'100px',
+						height:'100px',
+						background:'red',
+						display:'block'
+					}
+				};
+			}
+			fnClick(){
+				let oDiv=this.refs.div1;
+				if(oDiv.style.display=='block'){
+					oDiv.style.display='none';
+				}else{
+					oDiv.style.display='block';
+				}
+			}
+			render(){
+				return (<div>
+					<input type="button" value="按钮" onClick={this.fnClick.bind(this)} />
+					<div ref="div1" style={this.state.style}></div>
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

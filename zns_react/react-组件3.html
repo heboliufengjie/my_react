@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			render(){
+				return (<div>
+					<h3>welcome react</h3><h4>welcome h4</h4>
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

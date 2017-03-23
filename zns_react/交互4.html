@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+	<script src="lib/jquery.js"></script>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					newsArr:[]
+				};
+			}
+			fetchData(){
+				let _this=this;
+				$.ajax({
+					url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+					data:{
+						wd:'a'
+					},
+					dataType:'jsonp',
+					jsonp:'cb'
+				}).then(res=>{
+					//console.log(res.s);
+					let arr=res.s;
+
+					_this.setState({
+						newsArr:arr
+					});
+				});
+			}
+			render(){
+				let liArr=[];
+				this.state.newsArr.forEach((item,index)=>{
+					liArr.push(<li key={index}>{item}</li>)
+				});
+				return (<div>
+					<input onClick={this.fetchData.bind(this)} type="button" value="获取数据" />
+					<ul ref="ul1">
+						{liArr}
+					</ul>
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

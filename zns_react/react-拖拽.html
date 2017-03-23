@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					style:{
+						width:'100px',
+						height:'100px',
+						background:'red',
+						position:'absolute',
+						left:0,
+						top:0
+					}
+				};
+			}
+			fnDown(ev){
+				let oDiv=ev.target;
+				let disX=ev.clientX-oDiv.offsetLeft;
+				let disY=ev.clientY-oDiv.offsetTop;
+
+				document.onmousemove=function(ev){
+					let l=ev.clientX-disX;
+					let t=ev.clientY-disY;
+
+					oDiv.style.left=l+'px';
+					oDiv.style.top=t+'px';					
+				};
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				};
+			}
+			render(){
+				return (<div style={this.state.style} onMouseDown={this.fnDown.bind(this)}></div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

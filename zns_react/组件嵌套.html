@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+	<script src="lib/jquery.js"></script>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class A extends React.Component{
+			render(){
+				return (<div>
+					<h3>我是 gradSon</h3>
+				</div>)
+			}
+		}
+		class List extends React.Component{
+			render(){
+				let arrLi=[];
+				for(let i=0; i<10; i++){
+					arrLi.push(<li key={i}>{i}</li>)
+				}
+				return (<div>
+					<ul>
+						{arrLi}
+					</ul>
+					<A />
+				</div>)
+			}
+		}
+		class MyParent extends React.Component{
+			constructor(...args){
+				super(...args);
+			}
+			render(){
+				return (<div>
+					<h3>我是父级</h3>
+					<List />
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyParent />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

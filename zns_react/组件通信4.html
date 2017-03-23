@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+	<script src="lib/jquery.js"></script>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class List extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					msg:'child msg'
+				};
+			}
+			componentDidMount(){
+				this.props.aaa(this.state.msg);
+			}
+			fnClick(){
+				this.setState({
+					msg:'msg child'
+				});
+				this.props.aaa(this.state.msg);
+			}
+			render(){
+				return (<div>
+					<h3 onClick={this.fnClick.bind(this)}>我是子级</h3>
+				</div>)
+			}
+		}
+		class MyParent extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					msg:''
+				};
+			}
+			fnParent(msg){
+				this.setState({
+					msg:msg
+				});
+			}
+			render(){
+				return (<div>
+					<h3>我是父级 ->{this.state.msg}</h3>
+					<List aaa={this.fnParent.bind(this)} />
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyParent />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

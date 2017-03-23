@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					show:'none'
+				};
+
+				this.bSign=true;
+			}
+			fnClick(){
+				this.bSign=!this.bSign;
+				console.log(this.bSign);
+				this.setState({
+					show:this.bSign?'none':'block'
+				});
+			}
+			render(){
+				return (<div>
+					<input type="button" value="按钮" onClick={this.fnClick.bind(this)} />
+					<div className="box" style={{display:this.state.show}}></div>
+				</div>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>

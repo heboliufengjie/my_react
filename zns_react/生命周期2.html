@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/react.js"></script>
+	<script src="lib/react-dom.js"></script>
+	<script src="lib/babel.min.js"></script>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		
+	</div>
+	<script type="text/babel">
+		class MyTitle extends React.Component{
+			constructor(...args){
+				super(...args);
+				this.state={
+					msg:Math.random()
+				};
+			}
+			componentWillMount(){
+				console.log('组件加载之前')
+			}
+			componentDidMount(){
+				console.log('组件加载之后')
+			}
+			componentWillUpdate(){
+				console.log('组件更新之前');
+			}
+			componentDidUpdate(){
+				console.log('组件更新之后')
+			}
+
+			fnClick(){
+				this.setState({
+					msg:Math.random()
+				});
+			}
+			render(){
+				return (<h1 onClick={this.fnClick.bind(this)}>welcome -> {this.state.msg}</h1>)
+			}
+		} 
+		ReactDOM.render(
+			<MyTitle />,
+			document.querySelector('#div1')
+		);
+	</script>
+</body>
+</html>
